@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangkok Transit Optimizer</title>
+    
+    <!-- 1. Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Load front -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 3. connect file style.css -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main box app -->
+    <div class="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden">
+        
+        <!-- Head -->
+        <header class="p-6 bg-gray-800 text-white">
+            <div class="flex items-center space-x-3">
+                <h1 class="text-2xl font-bold">🚆Bangkok Transit Optimizer</h1>
+            </div>
+            <p class="text-gray-300 mt-1">ค้นหาเส้นทางรถไฟฟ้าที่เร็วและคุ้มค่าที่สุด</p>
+        </header>
+        <!-- Map button -->
+        <div class="p-6 pb-0">
+            <a href="map.png" id="open-map-btn" 
+               class="inline-flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 font-medium transition-colors">
+                <span>🗺️ ดูแผนที่เส้นทาง</span>
+            </a>
+        </div>
+        
+        <!-- Search form section -->
+        <form id="search-form" class="p-6 space-y-4">
+            <div>
+                <label for="start-station" class="block text-sm font-medium text-gray-700">📍 สถานีต้นทาง</label>
+                <input type="text" id="start-station" list="stations-list" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                       placeholder="กำลังโหลดสถานี...">
+            </div>
+
+            <div>
+                <label for="end-station" class="block text-sm font-medium text-gray-700">🏁 สถานีปลายทาง</label>
+                <input type="text" id="end-station" list="stations-list" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                       placeholder="กำลังโหลดสถานี...">
+            </div>
+
+            <!-- Datalist to be filled with information JavaScript (from Backend) -->
+            <datalist id="stations-list">
+            </datalist>
+
+            <button type="submit"
+                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out disabled:opacity-50"
+                    disabled> <!-- Keep the button closed until it is finished loading. -->
+                🔍 ค้นหาเส้นทาง
+            </button>
+        </form>
+
+        <!-- Results display section (hidden for now) -->
+        <div id="results-container" class="hidden p-6 border-t border-gray-200">
+            
+            <!-- 1. Loading Spinner (hidden for now) -->
+            <div id="loading-spinner" class="hidden text-center py-10">
+                <svg class="animate-spin h-8 w-8 text-indigo-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="mt-3 font-medium text-gray-600">กำลังค้นหาเส้นทางที่ดีที่สุด...</p>
+            </div>
+
+            <!-- 2. Error Message (hidden for now) -->
+            <div id="error-message" class="hidden p-4 bg-red-100 text-red-700 rounded-lg">
+                <p class="font-bold">เกิดข้อผิดพลาด</p>
+                <p id="error-text">ไม่พบสถานีที่ระบุ กรุณาลองใหม่อีกครั้ง</p>
+            </div>
+
+            <!-- 3. Real results (hidden for now) -->
+            <div id="results-content" class="hidden">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">เส้นทางที่ดีที่สุด</h2>
+                
+                <!-- Summary of results -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <div class="text-sm text-gray-600">เวลารวมประมาณ</div>
+                        <div id="total-time" class="text-2xl font-bold text-indigo-600">25 นาที</div>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <div class="text-sm text-gray-600">จำนวนการเปลี่ยนสาย</div>
+                        <div id="total-transfers" class="text-2xl font-bold text-indigo-600">1 ครั้ง</div>
+                    </div>
+                </div>
+
+                <!-- Travel steps (Timeline) -->
+                <h3 class="font-semibold text-gray-800 mb-3">ขั้นตอนการเดินทาง:</h3>
+                <ol id="path-steps" class="timeline">
+                    <!-- The results will be generated by app.js -->
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4. Connect the app.js file (important: defer) -->
+    <script src="app.js" defer></script>
+
+</body>
+</html>

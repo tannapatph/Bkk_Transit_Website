@@ -1,0 +1,223 @@
+station_A,station_B,line,time
+
+BTS Sukhumvit Line (Light Green)
+
+Khu Khot,Yaek Kor Por Aor,BTS Sukhumvit Line,2
+Yaek Kor Por Aor,Royal Thai Air Force Museum,BTS Sukhumvit Line,2
+Royal Thai Air Force Museum,Bhumibol Adulyadej Hospital,BTS Sukhumvit Line,2
+Bhumibol Adulyadej Hospital,Saphan Mai,BTS Sukhumvit Line,2
+Saphan Mai,Sai Yud,BTS Sukhumvit Line,2
+Sai Yud,Phahon Yothin 59,BTS Sukhumvit Line,2
+Phahon Yothin 59,Wat Phra Sri Mahathat (Sukhumvit),BTS Sukhumvit Line,2
+Wat Phra Sri Mahathat (Sukhumvit),11th Infantry Regiment,BTS Sukhumvit Line,2
+11th Infantry Regiment,Bang Bua,BTS Sukhumvit Line,2
+Bang Bua,Royal Forest Department,BTS Sukhumvit Line,2
+Royal Forest Department,Kasetsart University,BTS Sukhumvit Line,2
+Kasetsart University,Sena Nikhom,BTS Sukhumvit Line,2
+Sena Nikhom,Ratchayothin,BTS Sukhumvit Line,2
+Ratchayothin,Phahon Yothin 24,BTS Sukhumvit Line,2
+Phahon Yothin 24,Ha Yaek Lat Phrao (Sukhumvit),BTS Sukhumvit Line,2
+Ha Yaek Lat Phrao (Sukhumvit),Mo Chit (Sukhumvit),BTS Sukhumvit Line,2
+Mo Chit (Sukhumvit),Saphan Khwai,BTS Sukhumvit Line,2
+Saphan Khwai,Ari,BTS Sukhumvit Line,2
+Ari,Sanam Pao,BTS Sukhumvit Line,2
+Sanam Pao,Victory Monument,BTS Sukhumvit Line,2
+Victory Monument,Phaya Thai (Sukhumvit),BTS Sukhumvit Line,2
+Phaya Thai (Sukhumvit),Ratchathewi,BTS Sukhumvit Line,2
+Ratchathewi,Siam (Sukhumvit),BTS Sukhumvit Line,2
+Siam (Sukhumvit),Chit Lom,BTS Sukhumvit Line,2
+Chit Lom,Phloen Chit,BTS Sukhumvit Line,2
+Phloen Chit,Nana,BTS Sukhumvit Line,2
+Nana,Asok (Sukhumvit),BTS Sukhumvit Line,2
+Asok (Sukhumvit),Phrom Phong,BTS Sukhumvit Line,2
+Phrom Phong,Thong Lo,BTS Sukhumvit Line,2
+Thong Lo,Ekkamai,BTS Sukhumvit Line,2
+Ekkamai,Phra Khanong,BTS Sukhumvit Line,2
+Phra Khanong,On Nut,BTS Sukhumvit Line,2
+On Nut,Bang Chak,BTS Sukhumvit Line,2
+Bang Chak,Punnawithi,BTS Sukhumvit Line,2
+Punnawithi,Udom Suk,BTS Sukhumvit Line,2
+Udom Suk,Bang Na,BTS Sukhumvit Line,2
+Bang Na,Bearing,BTS Sukhumvit Line,2
+Bearing,Samrong (Sukhumvit),BTS Sukhumvit Line,2
+Samrong (Sukhumvit),Pu Chao,BTS Sukhumvit Line,2
+Pu Chao,Chang Erawan,BTS Sukhumvit Line,2
+Chang Erawan,Royal Thai Naval Academy,BTS Sukhumvit Line,2
+Royal Thai Naval Academy,Pak Nam,BTS Sukhumvit Line,2
+Pak Nam,Srinagarindra,BTS Sukhumvit Line,2
+Srinagarindra,Phraek Sa,BTS Sukhumvit Line,2
+Phraek Sa,Sai Luat,BTS Sukhumvit Line,2
+Sai Luat,Kheha,BTS Sukhumvit Line,2
+
+BTS Silom Line (Dark Green)
+
+National Stadium,Siam (Silom),BTS Silom Line,2
+Siam (Silom),Ratchadamri,BTS Silom Line,2
+Ratchadamri,Sala Daeng (Silom),BTS Silom Line,2
+Sala Daeng (Silom),Chong Nonsi,BTS Silom Line,2
+Chong Nonsi,Surasak,BTS Silom Line,2
+Surasak,Saphan Taksin,BTS Silom Line,2
+Saphan Taksin,Krung Thon Buri (Silom),BTS Silom Line,2
+Krung Thon Buri (Silom),Wongwian Yai,BTS Silom Line,2
+Wongwian Yai,Pho Nimit,BTS Silom Line,2
+Pho Nimit,Talat Phlu,BTS Silom Line,2
+Talat Phlu,Wutthakat,BTS Silom Line,2
+Wutthakat,Bang Wa (Silom),BTS Silom Line,2
+
+MRT Blue Line
+
+Tha Phra,Charan Sanit Wong 13,MRT Blue Line,2
+Charan Sanit Wong 13,Fai Chai,MRT Blue Line,2
+Fai Chai,Bang Khun Non,MRT Blue Line,2
+Bang Khun Non,Bang Yi Khan,MRT Blue Line,2
+Bang Yi Khan,Sirindhorn,MRT Blue Line,2
+Sirindhorn,Bang Phlat,MRT Blue Line,2
+Bang Phlat,Bang O,MRT Blue Line,2
+Bang O,Bang Pho,MRT Blue Line,2
+Bang Pho,Tao Poon (Blue),MRT Blue Line,2
+Tao Poon (Blue),Bang Sue (Blue),MRT Blue Line,2
+Bang Sue (Blue),Kamphaeng Phet,MRT Blue Line,2
+Kamphaeng Phet,Chatuchak Park (Blue),MRT Blue Line,2
+Chatuchak Park (Blue),Phahon Yothin (Blue),MRT Blue Line,2
+Phahon Yothin (Blue),Lat Phrao (Blue),MRT Blue Line,2
+Lat Phrao (Blue),Ratchadaphisek,MRT Blue Line,2
+Ratchadaphisek,Sutthisan,MRT Blue Line,2
+Sutthisan,Huai Khwang,MRT Blue Line,2
+Huai Khwang,Thailand Cultural Centre,MRT Blue Line,2
+Thailand Cultural Centre,Phra Ram 9,MRT Blue Line,2
+Phra Ram 9,Phetchaburi (Blue),MRT Blue Line,2
+Phetchaburi (Blue),Sukhumvit (Blue),MRT Blue Line,2
+Sukhumvit (Blue),Queen Sirikit National Convention Centre,MRT Blue Line,2
+Queen Sirikit National Convention Centre,Khlong Toei,MRT Blue Line,2
+Khlong Toei,Lumpini,MRT Blue Line,2
+Lumpini,Si Lom (Blue),MRT Blue Line,2
+Si Lom (Blue),Sam Yan,MRT Blue Line,2
+Sam Yan,Hua Lamphong,MRT Blue Line,2
+Hua Lamphong,Wat Mangkon,MRT Blue Line,2
+Wat Mangkon,Sam Yot,MRT Blue Line,2
+Sam Yot,Sanam Chai,MRT Blue Line,2
+Sanam Chai,Itsaraphap,MRT Blue Line,2
+Itsaraphap,Tha Phra,MRT Blue Line,2
+Tha Phra,Bang Phai,MRT Blue Line,2
+Bang Phai,Bang Wa (Blue),MRT Blue Line,2
+Bang Wa (Blue),Phetkasem 48,MRT Blue Line,2
+Phetkasem 48,Phasi Charoen,MRT Blue Line,2
+Phasi Charoen,Bang Khae,MRT Blue Line,2
+Bang Khae,Lak Song,MRT Blue Line,2
+
+Airport Rail Link
+
+Phaya Thai (ARL),Ratchaprarop,Airport Rail Link,3
+Ratchaprarop,Makkasan (ARL),Airport Rail Link,3
+Makkasan (ARL),Ramkhamhaeng,Airport Rail Link,3
+Ramkhamhaeng,Hua Mak,Airport Rail Link,3
+Hua Mak,Ban Thap Chang,Airport Rail Link,3
+Ban Thap Chang,Lat Krabang,Airport Rail Link,3
+Lat Krabang,Suvarnabhumi,Airport Rail Link,3
+
+MRT Purple Line
+
+Tao Poon (Purple),Bang Son,MRT Purple Line,2
+Bang Son,Wong Sawang,MRT Purple Line,2
+Wong Sawang,Yaek Tiwanon,MRT Purple Line,2
+Yaek Tiwanon,Ministry of Public Health,MRT Purple Line,2
+Ministry of Public Health,Nonthaburi Civic Center (Purple),MRT Purple Line,2
+Nonthaburi Civic Center (Purple),Bang Krasor,MRT Purple Line,2
+Bang Krasor,Yaek Nonthaburi 1,MRT Purple Line,2
+Yaek Nonthaburi 1,Phra Nang Klao Bridge,MRT Purple Line,2
+Phra Nang Klao Bridge,Sai Ma,MRT Purple Line,2
+Sai Ma,Bang Rak Noi Tha It,MRT Purple Line,2
+Bang Rak Noi Tha It,Bang Rak Yai,MRT Purple Line,2
+Bang Rak Yai,Bang Phlu,MRT Purple Line,2
+Bang Phlu,Sam Yaek Bang Yai,MRT Purple Line,2
+Sam Yaek Bang Yai,Talad Bang Yai,MRT Purple Line,2
+Talad Bang Yai,Khlong Bang Phai,MRT Purple Line,2
+
+MRT Yellow Line
+
+Lat Phrao (Yellow),Phahon Yothin 24,MRT Yellow Line,2
+Phahon Yothin 24,Chok Chai 4,MRT Yellow Line,2
+Chok Chai 4,Lat Phrao 71,MRT Yellow Line,2
+Lat Phrao 71,Lat Phrao 83,MRT Yellow Line,2
+Lat Phrao 83,Mahat Thai,MRT Yellow Line,2
+Mahat Thai,Lat Phrao 101,MRT Yellow Line,2
+Lat Phrao 101,Bang Kapi,MRT Yellow Line,2
+Bang Kapi,Yaek Lam Sali,MRT Yellow Line,2
+Yaek Lam Sali,Si Kritha,MRT Yellow Line,2
+Si Kritha,Phatthanakan,MRT Yellow Line,2
+Phatthanakan,Klong Kalan Tan,MRT Yellow Line,2
+Klong Kalan Tan,Si Nut,MRT Yellow Line,2
+Si Nut,Srinagarindra 38,MRT Yellow Line,2
+Srinagarindra 38,Suan Luang Rama IX,MRT Yellow Line,2
+Suan Luang Rama IX,Si Udom,MRT Yellow Line,2
+Si Udom,Si Iam,MRT Yellow Line,2
+Si Iam,Si La Salle,MRT Yellow Line,2
+Si La Salle,Si Bearing,MRT Yellow Line,2
+Si Bearing,Si Dan,MRT Yellow Line,2
+Si Dan,Si Thepha,MRT Yellow Line,2
+Si Thepha,Thipphawan,MRT Yellow Line,2
+Thipphawan,Samrong (Yellow),MRT Yellow Line,2
+
+MRT Pink Line
+
+Nonthaburi Civic Center (Pink),Khae Rai,MRT Pink Line,2
+Khae Rai,Sanambin Nam,MRT Pink Line,2
+Sanambin Nam,Samakkhi,MRT Pink Line,2
+Samakkhi,Royal Irrigation Department,MRT Pink Line,2
+Royal Irrigation Department,Yaek Pak Kret,MRT Pink Line,2
+Yaek Pak Kret,Pak Kret Bypass,MRT Pink Line,2
+Pak Kret Bypass,Chaeng Watthana-Pak Kret 28,MRT Pink Line,2
+Chaeng Watthana-Pak Kret 28,Mueang Thong Thani,MRT Pink Line,2
+Mueang Thong Thani,Si Rat,MRT Pink Line,2
+Si Rat,Chaeng Watthana 14,MRT Pink Line,2
+Chaeng Watthana 14,Lak Si (Pink),MRT Pink Line,2
+Lak Si (Pink),Rajabhat Phranakhon,MRT Pink Line,2
+Rajabhat Phranakhon,Wat Phra Sri Mahathat (Pink),MRT Pink Line,2
+Wat Phra Sri Mahathat (Pink),Ram Inthra 3,MRT Pink Line,2
+Ram Inthra 3,Lat Pla Khao,MRT Pink Line,2
+Lat Pla Khao,Ram Inthra Km. 4,MRT Pink Line,2
+Ram Inthra Km. 4,Maiyalap,MRT Pink Line,2
+Maiyalap,Vacharaphol,MRT Pink Line,2
+Vacharaphol,Ram Inthra Km. 6,MRT Pink Line,2
+Ram Inthra Km. 6,Khubon,MRT Pink Line,2
+Khubon,Ram Inthra Km. 9,MRT Pink Line,2
+Ram Inthra Km. 9,Outer Ring Road-Ram Inthra,MRT Pink Line,2
+Outer Ring Road-Ram Inthra,Nopparat,MRT Pink Line,2
+Nopparat,Bang Chan,MRT Pink Line,2
+Bang Chan,Setthabutbamphen,MRT Pink Line,2
+Setthabutbamphen,Min Buri Market,MRT Pink Line,2
+Min Buri Market,Min Buri,MRT Pink Line,2
+
+SRT Dark Red Line
+
+Don Mueang,Kan Kheha,SRT Dark Red Line,3
+Kan Kheha,Lak Si (SRT),SRT Dark Red Line,3
+Lak Si (SRT),Thung Song Hong,SRT Dark Red Line,3
+Thung Song Hong,Bang Khen,SRT Dark Red Line,3
+Bang Khen,Wat Samian Nari,SRT Dark Red Line,3
+Wat Samian Nari,Chatuchak,SRT Dark Red Line,3
+Chatuchak,Bang Sue (SRT),SRT Dark Red Line,3
+
+Gold Line
+
+Krung Thon Buri (Gold),Charoen Nakhon,Gold Line,2
+Charoen Nakhon,Khlong San,Gold Line,2
+
+--- INTERCHANGES (*** เพิ่ม Penalty 15 นาที ***) ---
+
+Siam (Sukhumvit),Siam (Silom),Interchange,10
+Asok (Sukhumvit),Sukhumvit (Blue),Interchange,10
+Sala Daeng (Silom),Si Lom (Blue),Interchange,10
+Bang Wa (Silom),Bang Wa (Blue),Interchange,10
+Mo Chit (Sukhumvit),Chatuchak Park (Blue),Interchange,10
+Ha Yaek Lat Phrao (Sukhumvit),Phahon Yothin (Blue),Interchange,10
+Phaya Thai (Sukhumvit),Phaya Thai (ARL),Interchange,10
+Phetchaburi (Blue),Makkasan (ARL),Interchange,10
+Tao Poon (Blue),Tao Poon (Purple),Interchange,10
+Lak Si (Pink),Lak Si (SRT),Interchange,10
+Wat Phra Sri Mahathat (Sukhumvit),Wat Phra Sri Mahathat (Pink),Interchange,10
+Nonthaburi Civic Center (Purple),Nonthaburi Civic Center (Pink),Interchange,10
+Lat Phrao (Blue),Lat Phrao (Yellow),Interchange,10
+Samrong (Sukhumvit),Samrong (Yellow),Interchange,10
+Krung Thon Buri (Silom),Krung Thon Buri (Gold),Interchange,10
+Bang Sue (Blue),Bang Sue (SRT),Interchange,10

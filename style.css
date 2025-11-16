@@ -1,0 +1,50 @@
+/* Use Sarabun font for Thai and Inter for English */
+body {
+    font-family: 'Sarabun', 'Inter', sans-serif;
+}
+
+/* ----- CSS Part For the route (Timeline) ----- */
+/* Hide the initial bullet point of the list. */
+.timeline {
+    list-style-type: none;
+    padding-left: 1.5rem; /* Move slightly to the left */
+}
+
+/* Vertical lines of Timeline */
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    border-left: 2px solid #e2e8f0; /* Gray line */
+}
+
+/* Circle points of each step */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.5625rem; /* ( -9px / 16px ) = -0.5625rem */
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background-color: #cbd5e1; /* Default grey */
+    border: 2px solid white;
+}
+
+/* The end of the Timeline (no continuation)*/
+.timeline-item:last-child {
+    border-left-color: transparent;
+}
+
+/* --- Color of the electric train line (very important) --- */
+/* You can add more lines here. */
+.line-bts-green::before { background-color: #21a366; }
+.line-bts-silom::before { background-color: #008f5a; } /* Silom Line color separation */
+.line-mrt-blue::before { background-color: #0072bc; }
+.line-mrt-purple::before { background-color: #8d3a91; }
+.line-mrt-yellow::before { background-color: #ffd700; }
+.line-mrt-pink::before { background-color: #f39cb5; }
+.line-bts-gold::before { background-color: #c09900; }
+.line-arl::before { background-color: #da251d; }
+.line-srt-red::before { background-color: #c0272d; }
+.line-walk::before { background-color: #4a5568; } /* Dark grey for walking */
