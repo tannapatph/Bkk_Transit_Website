@@ -1,8 +1,11 @@
 // ----- 0. Configuration -----
-const API_BASE_URL = "https://bkk-transit-website.onrender.com"; 
+// **แก้ไข:** เปลี่ยนชื่อเป็น API_URL (จาก API_BASE_URL) เพื่อให้ตรงกับโค้ดใหม่
+const API_URL = "https://bkk-transit-website.onrender.com/"; 
 
 // ----- 1. Global Variables -----
 let allStations = []; 
+let transitData = {}; // **เพิ่ม:** สำหรับเก็บข้อมูลสาย/สถานี
+let sidebarListElement = null; // **เพิ่ม:** สำหรับเก็บ DOM ของ sidebar
 
 // ----- 2. DOM Elements -----
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalTimeEl = document.getElementById('total-time');
     const totalTransfersEl = document.getElementById('total-transfers');
     const pathStepsEl = document.getElementById('path-steps');
+
+    // **เพิ่ม:** เชื่อมต่อกับ Sidebar ที่สร้างใหม่
+    sidebarListElement = document.getElementById('sidebar-list');
 
     // ----- 3. Helper Functions -----
     // Function for map station line (from Backend) to name and color in CSS
@@ -45,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4.1. Load the list of all stations from the backend.
     async function loadAllStations() {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/all-stations`); 
+            // **แก้ไข:** ใช้ตัวแปร API_URL
+            const response = await fetch(`${API_URL}/api/all-stations`); 
             if (!response.ok) {
                 throw new Error('ไม่สามารถโหลดข้อมูลสถานีได้');
             }
@@ -119,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
             end_station: end
         });
         
-        const response = await fetch(`${API_BASE_URL}/api/find-path?${params.toString()}`);
+        // **แก้ไข:** ใช้ตัวแปร API_URL
+        const response = await fetch(`${API_URL}/api/find-path?${params.toString()}`);
         
         if (!response.ok) {
             const errorData = await response.json();
@@ -184,9 +192,101 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideResults() {
         resultsContent.classList.add('hidden');
     }
+
+    // ----- 6. NEW Sidebar Functions -----
     
-    // ----- 6. Initial Setup -----
+    // 6.1. ฟังก์ชันสำหรับดึงข้อมูล (API ใหม่)
+    async function loadSidebarData() {
+        if (!sidebarListElement) return; // ถ้าไม่มี sidebar ก็ไม่ต้องทำ
+        
+        sidebarListElement.innerHTML = '<div classclass="sidebar-item loading">Loading lines...</div>';
+        
+        try {
+            const response = await fetch(`${API_URL}/api/lines-and-stations`);
+            if (!response.ok) throw new Error('Failed to fetch lines');
+            
+            transitData = await response.json();
+            
+            // เริ่มต้น: ให้แสดง "รายการสาย" ก่อน
+            showLinesList();
+
+        } catch (error) {
+            console.error("Error loading sidebar data:", error);
+            if (sidebarListElement) {
+                sidebarListElement.innerHTML = '<div class="sidebar-item error">Failed to load data</div>';
+            }
+        }
+    }
+
+    // 6.2. ฟังก์ชันสำหรับ "แสดงรายการสาย" (หน้าแรกของ Sidebar)
+    function showLinesList() {
+        if (!sidebarListElement) return;
+
+        sidebarListElement.innerHTML = ''; // เคลียร์ sidebar
+        
+        // (คุณสามารถลบ Title ออกได้ถ้าไม่ต้องการ)
+        // const title = document.createElement('h3');
+        // title.className = 'sidebar-title'; 
+        // title.textContent = '--- All Lines ---';
+        // sidebarListElement.appendChild(title);
+        
+        // วนลูปสร้าง "สาย"
+        for (const lineName in transitData) {
+            const lineItem = document.createElement('div');
+            // **แก้ไข:** เพิ่ม Tailwind classes ให้สวยงาม
+            lineItem.className = 'p-3 hover:bg-gray-700 rounded-md cursor-pointer transition-colors'; 
+            lineItem.textContent = lineName;
+            
+            // *** สำคัญ: เมื่อคลิกสาย ให้ไปหน้า "แสดงสถานี" ***
+            lineItem.onclick = () => showStationsForLine(lineName);
+            
+            sidebarListElement.appendChild(lineItem);
+        }
+    }
+
+    // 6.3. ฟังก์ชันสำหรับ "แสดงสถานีในสาย" (หน้าที่สอง)
+    function showStationsForLine(lineName) {
+        if (!sidebarListElement) return;
+
+        sidebarListElement.innerHTML = ''; // เคลียร์ sidebar
+        
+        // --- 1. สร้างปุ่ม "ย้อนกลับ" ---
+        const backButton = document.createElement('div');
+        // **แก้ไข:** เพิ่ม Tailwind classes ให้สวยงาม
+        backButton.className = 'p-3 font-bold text-indigo-400 hover:bg-gray-700 rounded-md cursor-pointer transition-colors'; 
+        backButton.textContent = '← Back to All Lines';
+        
+        // *** สำคัญ: เมื่อคลิกย้อนกลับ ให้ไปหน้า "แสดงสาย" ***
+        backButton.onclick = showLinesList;
+        sidebarListElement.appendChild(backButton);
+
+        // --- 2. สร้าง Title (ชื่อสาย) (ถ้าต้องการ) ---
+        const title = document.createElement('h3');
+        title.className = 'p-3 text-gray-400 text-sm font-semibold uppercase mt-2';
+        title.textContent = lineName;
+        sidebarListElement.appendChild(title);
+
+        // --- 3. วนลูปสร้าง "สถานี" ---
+        const stations = transitData[lineName];
+        for (const stationName of stations) {
+            const stationItem = document.createElement('div');
+            // **แก้ไข:** เพิ่ม Tailwind classes ให้สวยงาม
+            stationItem.className = 'p-3 hover:bg-gray-700 rounded-md cursor-pointer transition-colors'; 
+            stationItem.textContent = stationName;
+            
+            // **เพิ่ม:** เมื่อคลิกสถานี ให้เติมชื่อลงในช่อง "สถานีต้นทาง"
+            stationItem.onclick = () => {
+                const startInput = document.getElementById('start-station');
+                startInput.value = stationName;
+            };
+            
+            sidebarListElement.appendChild(stationItem);
+        }
+    }
+    
+    // ----- 7. Initial Setup -----
     searchForm.addEventListener('submit', onSearchSubmit);
-    loadAllStations(); 
+    loadAllStations(); // <-- โหลดข้อมูลสำหรับ datalist (ยังจำเป็น)
+    loadSidebarData(); // <-- **เพิ่ม:** โหลดข้อมูลสำหรับ sidebar
 
 });

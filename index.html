@@ -17,10 +17,11 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<!-- **แก้ไข:** เปลี่ยน body ให้ใช้ flex และจัด layout ใหม่ -->
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row items-center md:items-start justify-center p-4 gap-6">
 
-    <!-- Main box app -->
-    <div class="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden">
+    <!-- Main box app (กล่องซ้าย) -->
+    <div class="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden h-fit">
         
         <!-- Head -->
         <header class="p-6 bg-gray-800 text-white">
@@ -107,6 +108,18 @@
 
         </div>
     </div>
+
+    <!-- **เพิ่ม:** Sidebar (กล่องขวา) ตามรูป screenshot -->
+    <aside class="w-full max-w-lg md:max-w-xs bg-gray-800 text-white rounded-xl shadow-2xl overflow-hidden h-fit md:h-[600px] flex flex-col">
+        <header class="p-4 border-b border-gray-700">
+            <h2 class="text-lg font-bold text-center">--- INTERCHANGES ---</h2>
+        </header>
+        
+        <!-- เนื้อหาของ Sidebar ที่จะถูกเติมโดย JavaScript -->
+        <div id="sidebar-list" class="p-4 overflow-y-auto">
+            <!-- JavaScript จะเติม "Loading..." หรือ "Lines..." หรือ "Stations..." ที่นี่ -->
+        </div>
+    </aside>
 
     <!-- 4. Connect the app.js file (important: defer) -->
     <script src="app.js" defer></script>

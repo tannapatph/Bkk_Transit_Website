@@ -13,6 +13,7 @@ CSV_FILE_PATH = "connections.csv"
 G = nx.Graph()
 all_stations = set()
 station_display_to_internal_map = {}
+line_to_stations_map = {} # <-- **เพิ่ม:** สร้างตัวแปร Global ไว้ตรงนี้
 
 # ----- 3. Helper Functions (NEW) -----
 def clean_station_name(name: str) -> str:
@@ -21,7 +22,8 @@ def clean_station_name(name: str) -> str:
 
 # ----- 4. Graph Loading Functions (UPDATED) -----
 def load_graph_from_csv():
-    global G, all_stations, station_display_to_internal_map
+    # **แก้ไข:** เพิ่ม line_to_stations_map เข้าไปใน global
+    global G, all_stations, station_display_to_internal_map, line_to_stations_map 
     try:
         df = pd.read_csv(CSV_FILE_PATH, comment='#', dtype={'time': float}) 
     except FileNotFoundError:
@@ -35,7 +37,11 @@ def load_graph_from_csv():
     all_stations = set()
     station_display_to_internal_map = {}
     
-    print("กำลังสร้าง Graph จาก CSV (เวอร์ชัน FINAL)...")
+    # **แก้ไข:** ลบ line_to_stations_map = {} บรรทัดนี้ (เพราะเราจะใช้ Global)
+    
+    temp_line_map = {}
+    
+    print("กำลังสร้าง Graph จาก CSV ...")
     
     for _, row in df.iterrows():
         if 'station_A' not in row or 'station_B' not in row or 'line' not in row or 'time' not in row:
@@ -70,7 +76,21 @@ def load_graph_from_csv():
         if internal_station_b not in station_display_to_internal_map[display_b]:
             station_display_to_internal_map[display_b].append(internal_station_b)
 
+        if line != "Interchange":
+            if line not in temp_line_map:
+                temp_line_map[line] = set()
+
+            temp_line_map[line].add(display_a)
+            temp_line_map[line].add(display_b)
+
     print(f"สร้าง Graph สำเร็จ: {len(all_stations)} สถานี, {G.number_of_edges()} เส้นทาง")
+    
+    # **แก้ไข:** เคลียร์ map เก่า (ถ้ามี) และเติมค่าใหม่จาก temp_line_map
+    line_to_stations_map.clear() 
+    for line_name, stations_set in temp_line_map.items():
+        line_to_stations_map[line_name] = sorted(list(stations_set))
+    
+    print(f"สร้างข้อมูลสายรถไฟสำเร็จ: {len(line_to_stations_map)} สาย") # <-- เพิ่ม log
 
 # ----- 5. Function format_path_to_json -----
 def format_path_to_json(path: List[str]) -> Dict[str, Any]:
@@ -149,6 +169,18 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     load_graph_from_csv()
+    
+@app.get("/api/lines-and-stations")
+def get_lines_and_stations():
+    """
+    ส่งข้อมูลสถานีทั้งหมด โดยจัดกลุ่มตามสาย
+    (ตัวอย่าง: {"BTS Sukhumvit Line": ["Siam", "Asok", ...], ...})
+    """
+    if not line_to_stations_map:
+        # **แก้ไข:** เพิ่ม Log เวลาเกิดปัญหา
+        print("!!! WARNING: line_to_stations_map is empty. API call failed.")
+        raise HTTPException(status_code=500, detail="ไม่สามารถโหลดข้อมูลสายรถไฟได้")
+    return line_to_stations_map
 
 @app.get("/api/all-stations")
 def get_all_stations():
