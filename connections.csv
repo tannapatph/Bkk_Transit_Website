@@ -203,7 +203,17 @@ Gold Line
 Krung Thon Buri (Gold),Charoen Nakhon,Gold Line,2
 Charoen Nakhon,Khlong San,Gold Line,2
 
---- INTERCHANGES (*** เพิ่ม Penalty 15 นาที ***) ---
+SRT Light Red Line
+
+Bang Sue (SRT), Bang Son, SRT Light Red Line,2
+Bang Son, Bang Bamru, SRT Light Red Line,6
+Bang Bamru, Taling Chan, SRT Light Red Line,2
+Taling Chan, Ban Chimpli, SRT Light Red Line,2
+Ban Chimpli, Kanchanaphisek, SRT Light Red Line,2
+Kanchanaphisek, Sala Thammasop, SRT Light Red Line,2
+Sala Thammasop, Salaya, SRT Light Red Line,2
+
+INTERCHANGES
 
 Siam (Sukhumvit),Siam (Silom),Interchange,10
 Asok (Sukhumvit),Sukhumvit (Blue),Interchange,10

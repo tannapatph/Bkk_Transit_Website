@@ -7,7 +7,7 @@ let transitData = {};
 let activeInputTarget = 'start-station'; // ติดตามช่องที่ active
 
 // ----- 2. Global DOM Element Variables (The Fix) -----
-// ย้ายตัวแปร DOM ทั้งหมดออกมาข้างนอก โดยกำหนดเป็น null ก่อน
+// Move all DOM variables outside, setting them to null first.
 let searchForm = null;
 let startInput = null;
 let endInput = null;
@@ -24,17 +24,17 @@ let pathStepsEl = null;
 let sidebarListElement = null; 
 
 // ----- 3. DOMContentLoaded -----
-// เมื่อหน้าเว็บโหลดเสร็จ ค่อย "ค้นหา" element จริงๆ
+// Once the page has loaded, you can actually "search" for the element.
 document.addEventListener('DOMContentLoaded', () => {
     
     // 3.1. Assign DOM Elements
-    // (ตอนนี้เรากำลังกำหนดค่าให้ตัวแปร Global ที่อยู่ข้างบน)
+    // (We are now setting the values ​​for the Global variables above.)
     searchForm = document.getElementById('search-form');
     startInput = document.getElementById('start-station');
     endInput = document.getElementById('end-station');
     stationsDatalist = document.getElementById('stations-list');
     
-    // (ต้องเช็คก่อนว่า searchForm มีจริง)
+    // (You must first check that searchForm exists.)
     if(searchForm) {
         searchButton = searchForm.querySelector('button[type="submit"]');
     }
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3.2. Add Event Listeners
     
-    // ติดตามช่องที่ focus
+    // Follow the focus channels
     if(startInput) {
         startInput.onfocus = () => { activeInputTarget = 'start-station'; };
     }
@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
         endInput.onfocus = () => { activeInputTarget = 'end-station'; };
     }
     
-    // ตัวดักฟังการ submit (ย้ายมาไว้ตรงนี้)
+    // Submit Listener (Moved here)
     if(searchForm) {
         searchForm.addEventListener('submit', onSearchSubmit);
     }
 
     // 3.3. Initial Loaders
-    loadAllStations(); // โหลด datalist (สำหรับช่องค้นหา)
+    loadAllStations(); // โหลด datalist (for search box)
     loadSidebarData(); // โหลด sidebar
 });
 
@@ -81,6 +81,7 @@ function getLineDetails(lineCode) {
         "Gold Line": { name: "BTS สายสีทอง", colorClass: "line-bts-gold" },
         "Airport Rail Link": { name: "Airport Rail Link", colorClass: "line-arl" },
         "SRT Dark Red Line": { name: "SRT สายสีแดงเข้ม", colorClass: "line-srt-red" },
+        "SRT Light Red Line": {name: "SRT สายสีแดงอ่อน", colorClass: "line-srt-light-red"}, 
         "Interchange": { name: "เดินเปลี่ยนสาย", colorClass: "line-walk" }
     };
     return lines[lineCode] || { name: lineCode, colorClass: "line-walk" };
@@ -89,7 +90,7 @@ function getLineDetails(lineCode) {
 // ----- 5. Core Functions -----
 // 5.1. Load the list of all stations from the backend.
 async function loadAllStations() {
-    // (เช็คให้แน่ใจว่า element พร้อมใช้)
+    // (Make sure the element is ready to use)
     if (!startInput || !endInput || !stationsDatalist) return; 
     
     try {
@@ -129,7 +130,7 @@ function populateStations(stations) {
 // 5.3. Functions that work when the "Find Route" button is pressed
 async function onSearchSubmit(e) {
     e.preventDefault(); 
-    if (!startInput || !endInput) return; // (เช็คเผื่อไว้)
+    if (!startInput || !endInput) return; // (Check just in case)
 
     const startStation = startInput.value;
     const endStation = endInput.value;
@@ -145,7 +146,7 @@ async function onSearchSubmit(e) {
         return;
     }
 
-    hideError(); // <-- **นี่คือจุดที่เคย Error (ตอนนี้จะทำงานได้แล้ว)**
+    hideError(); 
     hideResults();
     showLoading();
     if(resultsContainer) resultsContainer.classList.remove('hidden'); 
@@ -181,7 +182,7 @@ async function findPathFromAPI(start, end) {
 }
 
 // ----- 6. UI Display Functions -----
-// (ฟังก์ชันเหล่านี้อยู่นอก DOMContentLoaded แต่จะ "เห็น" ตัวแปร Global)
+// (These functions are outside of DOMContentLoaded, but will "see" the Global variable.)
 
 function displayResults(data) {
     if (!totalTimeEl || !totalTransfersEl || !pathStepsEl || !resultsContent) return;
@@ -295,7 +296,7 @@ function showStationsForLine(lineName) {
         stationItem.textContent = stationName;
         
         stationItem.onclick = () => {
-            // (เช็คให้แน่ใจว่า targetInput มีจริง)
+            // (Make sure targetInput exists.)
             const targetInput = document.getElementById(activeInputTarget);
             if (targetInput) {
                 targetInput.value = stationName;
