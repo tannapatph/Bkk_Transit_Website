@@ -47,5 +47,6 @@ body {
 .line-bts-gold::before { background-color: #c09900; }
 .line-arl::before { background-color: #da251d; }
 .line-srt-red::before { background-color: #c0272d; }
-.line-srt-light-red::before {background-color: #e99093;}
-.line-walk::before { background-color: #4a5568; } /* Dark grey for walking */
+.line-srt-light-red::before {background-color: #E2686F;}
+.line-walk::before { background-color: #888888; } /* Dark grey for walking */
+

@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3.3. Initial Loaders
-    loadAllStations(); // โหลด datalist (for search box)
-    loadSidebarData(); // โหลด sidebar
+    loadAllStations(); // load datalist (for search box)
+    loadSidebarData(); //  sidebar
 });
 
 // ----- 4. Helper Functions -----
