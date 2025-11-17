@@ -1,6 +1,6 @@
 // ----- 0. Configuration -----
-// **แก้ไข:** เปลี่ยนชื่อเป็น API_URL (จาก API_BASE_URL) เพื่อให้ตรงกับโค้ดใหม่
-const API_URL = "https://bkk-transit-website.onrender.com/"; 
+// **แก้ไข:** ลบ / (slash) ตัวสุดท้ายออก เพื่อป้องกัน // (double slash)
+const API_URL = "https://bkk-transit-website.onrender.com"; 
 
 // ----- 1. Global Variables -----
 let allStations = []; 
